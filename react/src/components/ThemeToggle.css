@@ -1,0 +1,21 @@
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  padding: 0.6rem;
+  color: var(--text);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--bg);
+  border-color: var(--orange);
+}
+
+.theme-toggle svg {
+  display: block;
+}

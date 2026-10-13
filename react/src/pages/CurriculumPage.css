@@ -1,0 +1,153 @@
+/* Учебный план: таблица шире стандартной колонки настроек */
+.curriculum-main {
+  max-width: 1200px;
+}
+
+.curriculum-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem 1.2rem;
+  margin: 0.5rem 0 0;
+}
+
+.curriculum-meta dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.curriculum-meta dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.curriculum-meta-wide {
+  grid-column: 1 / -1;
+}
+
+/* Панель фильтров над таблицей */
+.curriculum-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.curriculum-filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.curriculum-filters input[type='search'] {
+  width: 220px;
+  padding: 0.5rem 0.75rem;
+}
+
+.curriculum-filters select {
+  width: auto;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Таблица дисциплин */
+.curriculum-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.9rem;
+}
+
+.curriculum-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.curriculum-table th,
+.curriculum-table td {
+  padding: 0.6rem 0.7rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.curriculum-table thead th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  white-space: nowrap;
+  border-bottom: 2px solid var(--line);
+}
+
+.curriculum-table .num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.curriculum-table tbody tr:hover {
+  background: var(--bg);
+}
+
+.curriculum-name {
+  color: var(--navy);
+  font-weight: 600;
+  min-width: 220px;
+}
+
+.curriculum-name .chip {
+  margin-left: 0.5rem;
+}
+
+.curriculum-sem {
+  margin: 0 0.25rem 0.25rem 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.curriculum-forms {
+  min-width: 140px;
+  color: var(--muted);
+}
+
+.curriculum-table tfoot td {
+  font-weight: 700;
+  color: var(--navy);
+  border-top: 2px solid var(--line);
+  border-bottom: none;
+  background: var(--bg);
+}
+
+.curriculum-sync {
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+  .curriculum-main {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .curriculum-meta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .curriculum-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .curriculum-filters input[type='search'] {
+    width: 100%;
+  }
+
+  .curriculum-filters select {
+    flex: 1;
+  }
+}

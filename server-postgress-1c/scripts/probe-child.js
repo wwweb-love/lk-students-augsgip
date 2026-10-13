@@ -1,0 +1,17 @@
+const fs = require('fs');
+const path = require('path');
+const root = path.join(process.env.TEMP, 'opencode', '1cconf');
+const p = path.join(root, 'Catalogs', 'СтрокиРУП.xml');
+const t = fs.readFileSync(p, 'utf8');
+const out = [];
+out.push('len=' + t.length);
+out.push('ChildObjects idx=' + t.indexOf('<ChildObjects'));
+out.push('Attribute count=' + (t.match(/<Attribute/g) || []).length);
+const i = t.indexOf('<ChildObjects');
+out.push('--- snippet around first ChildObjects:');
+out.push(t.slice(i, i + 1500));
+const a = t.indexOf('<Attribute');
+out.push('--- snippet around first Attribute:');
+out.push(t.slice(Math.max(0, a - 300), a + 600));
+fs.writeFileSync(path.join(process.cwd(), '1c-probe.txt'), out.join('\n'), 'utf8');
+console.log('ok');

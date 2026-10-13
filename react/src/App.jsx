@@ -1,53 +1,35 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { AppLayout } from './components/AppLayout'
-import { GuestRoute, ProtectedRoute } from './components/ProtectedRoute'
-import { ContactsPage } from './pages/ContactsPage'
-import { GradesPage } from './pages/GradesPage'
-import { LibraryPage } from './pages/LibraryPage'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage } from './pages/LoginPage'
-import { MessagesPage } from './pages/MessagesPage'
-import { NewsPage } from './pages/NewsPage'
-import { NotFoundPage } from './pages/NotFoundPage'
-import { PortfolioPage } from './pages/PortfolioPage'
-import { ProfilePage } from './pages/ProfilePage'
 import { RegisterPage } from './pages/RegisterPage'
+import { InitialPasswordPage } from './pages/InitialPasswordPage'
+import { ResetPasswordPage } from './pages/ResetPasswordPage'
 import { SchedulePage } from './pages/SchedulePage'
-import { loadMessages } from './store/actions/messagesThunks'
-import { loadNews } from './store/actions/newsThunks'
-
-function CabinetData() {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(loadMessages())
-    dispatch(loadNews())
-  }, [dispatch])
-  return <AppLayout />
-}
-
+import { CurriculumPage } from './pages/CurriculumPage'
+import { GradesPage } from './pages/GradesPage'
+import { MessengerPage } from './pages/MessengerPage'
+import { ProfilePage } from './pages/ProfilePage'
+import { SettingsPage } from './pages/SettingsPage'
+import { AdminPage } from './pages/AdminPage'
+import { CertificatePage } from './pages/CertificatePage'
+import { PortfolioPage } from './pages/PortfolioPage'
 
 export default function App() {
   return (
     <Routes>
-      <Route element={<GuestRoute />}>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-      </Route>
-      <Route element={<ProtectedRoute />}>
-        <Route element={<CabinetData />}>
-          <Route path="/" element={<SchedulePage />} />
-          <Route path="/grades" element={<GradesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/messages" element={<MessagesPage />} />
-          <Route path="/library" element={<LibraryPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-        </Route>
-      </Route>
-      <Route path="/home" element={<Navigate to="/" replace />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/initial_password" element={<InitialPasswordPage />} />
+      <Route path="/reset_password" element={<ResetPasswordPage />} />
+      <Route path="/" element={<SchedulePage />} />
+      <Route path="/curriculum" element={<CurriculumPage />} />
+      <Route path="/grades" element={<GradesPage />} />
+      <Route path="/messages" element={<MessengerPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/settings" element={<SettingsPage />} />
+      <Route path="/admin" element={<AdminPage />} />
+      <Route path="/certificate" element={<CertificatePage />} />
+      <Route path="/portfolio" element={<PortfolioPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

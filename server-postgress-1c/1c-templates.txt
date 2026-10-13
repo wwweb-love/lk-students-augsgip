@@ -1,0 +1,5 @@
+Schedule | /schedule/{DateStart}/{DateEnd} | methods: ["Name=GET","HTTPMethod=GET","Handler=ScheduleGET"]
+StudentsGetAll | /students | methods: ["Name=GET","HTTPMethod=GET","Handler=StudentsGetAll"]
+EmployeesGetAll | /employees | methods: ["Name=GET","HTTPMethod=GET","Handler=EmployeesGetAll"]
+StudyPlanByGroup | /study_plan/{group_name} | methods: ["Name=GET","HTTPMethod=GET","Handler=StudyPlanByGroupGET"]
+StudyPlanByQuery | /study_plan | methods: ["Name=GET","HTTPMethod=GET","Handler=StudyPlanQueryGET"]

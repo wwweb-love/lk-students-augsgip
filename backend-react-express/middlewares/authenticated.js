@@ -1,49 +1,44 @@
-const { verify } = require("../helpers/token");
-const { Pool } = require('pg');
+const ApiError = require('../utils/ApiError')
+const { verify } = require('../utils/token')
+const studentModel = require('../models/student.model')
+const sessionModel = require('../models/session.model')
 
-// Подключение к базе данных
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-});
+// Проверяет токен (cookie или заголовок Authorization: Bearer ...)
+// и кладёт пользователя в req.user
+module.exports = async function (req, res, next) {
+  try {
+    let token = req.cookies.token
 
-module.exports = async function(req, res, next) {
-    // Проверяем наличие токена в cookies
-    if (!req.cookies.token) {
-        return res.status(401).json({ error: "Пользователь не авторизован. Авторизуйтесь!" });
+    if (!token && req.headers.authorization?.startsWith('Bearer ')) {
+      token = req.headers.authorization.substring(7)
     }
 
+    if (!token) {
+      throw ApiError.unauthorized('Пользователь не авторизован. Авторизуйтесь!')
+    }
+
+    // Любая ошибка разбора/проверки токена (протухший, битый, чужой ключ) → 401
+    let tokenData
     try {
-        // Декодируем токен
-        const tokenData = verify(req.cookies.token);
-        
-        // Ищем пользователя в PostgreSQL по id
-        const client = await pool.connect();
-        
-        try {
-            const result = await client.query(
-                `SELECT id, name, specialty, group_name, login, password, email, snils
-                 FROM students
-                 WHERE id = $1`,
-                [tokenData.id]
-            );
-            
-            const user = result.rows[0];
-            
-            if (!user) {
-                return res.status(401).json({ error: "Пользователь не найден" });
-            }
-            
-            // Добавляем пользователя в объект запроса
-            req.user = user;
-            
-            next();
-            
-        } finally {
-            client.release();
-        }
-        
-    } catch (error) {
-        console.error('Ошибка авторизации:', error.message);
-        return res.status(401).json({ error: "Ошибка авторизации" });
+      tokenData = verify(token)
+    } catch {
+      return next(ApiError.unauthorized('Сессия недействительна. Авторизуйтесь!'))
     }
-};
+
+    const user = await studentModel.findById(tokenData.id)
+    if (!user) {
+      throw ApiError.unauthorized('Authenticated user not found')
+    }
+
+    req.user = user
+
+    // фиксируем активность сессии для аналитики («онлайн сейчас»), не тормозя ответ
+    if (tokenData.sid) {
+      sessionModel.touch(tokenData.sid).catch(() => {})
+    }
+
+    next()
+  } catch (error) {
+    next(error)
+  }
+}

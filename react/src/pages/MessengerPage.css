@@ -1,0 +1,449 @@
+/* Мессенджер: две колонки — поиск/диалоги слева, чат справа */
+.messenger-main {
+  max-width: 1200px;
+}
+
+.messenger {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-height: 540px;
+  height: calc(100vh - 270px);
+}
+
+/* --- Левая колонка --- */
+.messenger-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.9rem;
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* Поле поиска по ФИО */
+.messenger-search {
+  position: relative;
+}
+
+.messenger-search-icon {
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.messenger-search input {
+  width: 100%;
+  padding: 0.6rem 0.8rem 0.6rem 2.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.messenger-search input:focus {
+  outline: 2px solid var(--orange);
+  outline-offset: -1px;
+}
+
+.messenger-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.messenger-block-title {
+  margin: 0.4rem 0 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.messenger-hint {
+  margin: 0.3rem 0.2rem;
+  font-size: 0.85rem;
+}
+
+.messenger-hint-center {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Строка: результат поиска / диалог */
+.messenger-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.messenger-row:hover {
+  background: var(--bg);
+}
+
+.messenger-row-main {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.messenger-thread {
+  position: relative;
+}
+
+.messenger-thread-active {
+  background: var(--bg);
+  box-shadow: inset 3px 0 0 var(--orange);
+}
+
+/* Круглый аватар с инициалами */
+.messenger-avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.messenger-row-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.messenger-row-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.messenger-row-sub {
+  font-size: 0.76rem;
+}
+
+.messenger-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+
+.messenger-row-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.messenger-row-time {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Счётчик непрочитанных */
+.messenger-unread-chip {
+  display: inline-block;
+  min-width: 18px;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 18px;
+}
+
+/* Кнопка-конверт: открыть чат с найденным студентом */
+.messenger-envelope {
+  flex-shrink: 0;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--orange);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.messenger-envelope:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+
+/* --- Правая колонка: чат --- */
+.messenger-chat {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.messenger-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text);
+}
+
+.messenger-placeholder p {
+  margin: 0;
+}
+
+.messenger-chat-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  min-width: 0;
+}
+
+/* Лента сообщений */
+.messenger-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--bg);
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.messenger-msg {
+  max-width: 72%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.92rem;
+}
+
+.msg-in {
+  align-self: flex-start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 4px;
+}
+
+.msg-out {
+  align-self: flex-end;
+  background: var(--orange);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.messenger-msg-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.messenger-msg-meta {
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
+  text-align: right;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.msg-out .messenger-msg-meta {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.messenger-ticks {
+  font-weight: 700;
+}
+
+.messenger-thread-error {
+  margin: 0;
+  padding: 0 1rem;
+}
+
+/* Поле ввода + кнопка отправки */
+.messenger-compose {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  border-top: 1px solid var(--line);
+}
+
+.messenger-compose input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.messenger-compose input:focus {
+  outline: 2px solid var(--orange);
+  outline-offset: -1px;
+}
+
+.messenger-send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.75rem;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+}
+
+.messenger-send:hover:not(:disabled) {
+  background: var(--orange-dark);
+}
+
+.messenger-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Мобильная раскладка: колонки друг под другом --- */
+@media (max-width: 900px) {
+  .messenger {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .messenger-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    max-height: 320px;
+  }
+
+  .messenger-chat {
+    min-height: 420px;
+  }
+
+  .messenger-messages {
+    max-height: 50vh;
+  }
+}
+
+/* --- Всплывающие уведомления о новых сообщениях (справа сверху, 5 с) --- */
+.toast-stack {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 340px;
+}
+
+.messenger-toast {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--orange);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 0.6rem 2rem 0.6rem 0.8rem;
+  cursor: pointer;
+  animation: toast-in 0.25s ease;
+}
+
+.messenger-toast-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.messenger-toast-body {
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.messenger-toast-close {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.4rem;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.1rem 0.25rem;
+}
+
+.messenger-toast-close:hover {
+  color: var(--text);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .toast-stack {
+    left: 16px;
+    right: 16px;
+    max-width: none;
+  }
+}

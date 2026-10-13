@@ -1,0 +1,27 @@
+--- context around line 7
+   4: 	<setForAttributesByDefault>true</setForAttributesByDefault>
+   5: 	<independentRightsOfChildObjects>false</independentRightsOfChildObjects>
+   6: 	<object>
+   7: 		<name>HTTPService.StudentLK_API.URLTemplate.EmployeesGetAll.Method.GET</name>
+   8: 		<right>
+   9: 			<name>Use</name>
+  10: 			<value>true</value>
+  11: 		</right>
+--- context around line 58
+  55: 		</right>
+  56: 	</object>
+  57: 	<object>
+  58: 		<name>HTTPService.StudentLK_API.URLTemplate.Schedule.Method.GET</name>
+  59: 		<right>
+  60: 			<name>Use</name>
+  61: 			<value>true</value>
+  62: 		</right>
+--- context around line 156
+ 153: 		</right>
+ 154: 	</object>
+ 155: 	<object>
+ 156: 		<name>HTTPService.StudentLK_API.URLTemplate.StudentsGetAll.Method.GET</name>
+ 157: 		<right>
+ 158: 			<name>Use</name>
+ 159: 			<value>true</value>
+ 160: 		</right>

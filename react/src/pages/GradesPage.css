@@ -1,0 +1,124 @@
+/* Успеваемость: широкая колонка (как у учебного плана) + сводка карточками */
+.grades-main {
+  max-width: 1200px;
+}
+
+/* Строка сводки: средний балл, зачёты, всего записей, распределение */
+.grades-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.grades-summary-card h3 {
+  margin-top: 0;
+}
+
+/* Крупное число сводки */
+.grades-average {
+  margin: 0.2rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.grades-summary-card .muted {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+/* Распределение оценок: полоски 5 → 2 */
+.grades-dist-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.grades-dist-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.grades-dist-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.grades-dist-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.grades-dist-fill.grade-5 { background: var(--green); }
+.grades-dist-fill.grade-4 { background: #1976d2; }
+.grades-dist-fill.grade-3 { background: #f57c00; }
+.grades-dist-fill.grade-2 { background: var(--danger); }
+
+.grades-dist-count {
+  min-width: 1.5rem;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Бейдж оценки в ячейке таблицы и в распределении */
+.grade-badge {
+  display: inline-block;
+  min-width: 1.9rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+}
+
+.grade-badge.grade-5 { background: var(--green); }
+.grade-badge.grade-4 { background: #1976d2; }
+.grade-badge.grade-3 { background: #f57c00; }
+.grade-badge.grade-2 { background: var(--danger); }
+
+/* Зачёт / Незачёт — текстовые бейджи */
+.grade-badge.grade-pass {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.grade-badge.grade-fail {
+  background: #fdecea;
+  color: var(--danger);
+}
+
+/* Тёмная тема (атрибут data-theme на <html>): светлые бейджи приглушаем */
+[data-theme='dark'] .grade-badge.grade-pass {
+  background: #1b3a1d;
+  color: #81c784;
+}
+
+[data-theme='dark'] .grade-badge.grade-fail {
+  background: #3a1b1b;
+  color: #e57373;
+}
+
+/* Адаптив */
+@media (max-width: 1200px) {
+  .grades-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grades-summary {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,27 @@
+/* Стили для страницы регистрации - наследуются от LoginPage.css */
+/* Дополнительные стили специфичные для регистрации */
+
+.hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 1024px) {
+  .auth-card {
+    padding: 2rem;
+  }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .hint {
+    font-size: 0.8rem;
+  }
+}

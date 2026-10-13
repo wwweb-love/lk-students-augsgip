@@ -1,0 +1,163 @@
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.auth-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 102, 0, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Вход и регистрация: блок с логотипом и названием
+   центрируется по центру левой половины страницы */
+.auth-hero.hero-centered .auth-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-logo {
+  margin-bottom: 2rem;
+}
+
+.brand-kicker {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.auth-hero h1 {
+  color: white;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  max-width: 100%;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.auth-tagline {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.auth-form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--bg);
+}
+
+.auth-card {
+  width: min(440px, 100%);
+  background: var(--card);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--navy);
+}
+
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.auth-links a {
+  color: var(--orange);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 1024px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-hero {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .auth-hero h1 {
+    font-size: 1.4rem;
+    max-width: 100%;
+  }
+
+  .auth-logo {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .auth-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .brand-kicker {
+    font-size: 0.75rem;
+  }
+
+  .auth-tagline {
+    font-size: 0.75rem;
+  }
+
+  .auth-form-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .auth-card h2 {
+    font-size: 1.3rem;
+  }
+}

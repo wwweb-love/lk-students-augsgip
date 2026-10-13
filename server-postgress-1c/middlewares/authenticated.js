@@ -10,7 +10,7 @@ module.exports = async function(req, res, next) {
     const tokenData = verify(req.cookies.token)
     
     // SQL запрос для поиска пользователя по id
-    const query = 'SELECT * FROM users WHERE id = $1'
+    const query = 'SELECT * FROM students WHERE id = $1'
     const result = await pool.query(query, [tokenData.id])
     
     const user = result.rows[0]

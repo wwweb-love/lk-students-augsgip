@@ -1,0 +1,374 @@
+.schedule-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.schedule-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+}
+
+.schedule-layout.layout-collapsed {
+  margin-left: 70px;
+}
+
+.schedule-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.4rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--navy);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: var(--bg);
+}
+
+.schedule-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.schedule-logo {
+  flex-shrink: 0;
+}
+
+.schedule-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.schedule-brand h1 {
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--navy);
+}
+
+.schedule-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.schedule-email {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.schedule-main {
+  flex: 1;
+  padding: 1.6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.schedule-content {
+  width: 100%;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+  font-size: 0.75rem;
+  margin: 0 0 0.2rem;
+}
+
+/* Навигация по неделям */
+.week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding: 0.75rem 1rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.week-nav-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.week-nav-dates {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+
+/* Иконки шевронов: видны только в мобильной версии (там текст кнопок скрыт) */
+.week-nav-icon {
+  display: none;
+  vertical-align: middle;
+}
+
+.week-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--orange);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Сетка недели */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.75rem;
+}
+
+.day-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  box-shadow: var(--shadow);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-card.is-today {
+  outline: 2px solid var(--orange);
+  outline-offset: -2px;
+}
+
+.day-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.day-card h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.day-date {
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.lesson-block {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.lesson-block:last-child {
+  border-bottom: none;
+}
+
+.time {
+  color: var(--orange);
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.lesson-title {
+  margin: 0.15rem 0;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.lesson-meta {
+  margin: 0.15rem 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.chip {
+  display: inline-block;
+  background: var(--bg);
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+.chip.orange {
+  background: #ffe6d8;
+  color: var(--orange-dark);
+}
+
+.chip-lecture {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.chip-practice {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.status.error {
+  background: #fdecea;
+  color: var(--danger);
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 1200px) {
+  .week-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .schedule-layout {
+    margin-left: 0;
+  }
+
+  .schedule-layout.layout-collapsed {
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .week-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .schedule-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .schedule-brand h1 {
+    font-size: 0.95rem;
+  }
+
+  .schedule-kicker {
+    font-size: 0.65rem;
+  }
+
+  .schedule-email {
+    display: none;
+  }
+
+  .schedule-main {
+    padding: 1rem;
+  }
+
+  .week-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .day-card {
+    min-height: auto;
+  }
+
+  .page-head {
+    flex-direction: column;
+  }
+
+  /* Навигация по неделям: одна строка — ‹ даты · Текущая неделя › */
+  .week-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.6rem 0.7rem;
+  }
+
+  .week-nav-info {
+    order: 0;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .week-nav-text {
+    display: none;
+  }
+
+  .week-nav-icon {
+    display: inline-block;
+  }
+
+  .week-nav .week-nav-btn {
+    padding: 0.5rem 0.65rem;
+  }
+
+  .week-nav .week-nav-dates {
+    font-size: 0.85rem;
+  }
+
+  .week-nav .btn-link {
+    white-space: nowrap;
+    font-size: 0.75rem;
+  }
+}

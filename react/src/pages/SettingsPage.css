@@ -1,0 +1,198 @@
+.settings-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.settings-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+}
+
+.settings-layout.layout-collapsed {
+  margin-left: 70px;
+}
+
+.settings-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.4rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--navy);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: var(--bg);
+}
+
+.settings-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.settings-logo {
+  flex-shrink: 0;
+}
+
+.settings-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.settings-brand h1 {
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--navy);
+}
+
+.settings-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.settings-email {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.settings-main {
+  flex: 1;
+  padding: 1.6rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.settings-content {
+  width: 100%;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+  font-size: 0.75rem;
+  margin: 0 0 0.2rem;
+}
+
+.settings-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.settings-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+  color: var(--navy);
+}
+
+.settings-card .muted {
+  margin-bottom: 1rem;
+}
+
+.settings-option {
+  padding: 0.5rem 0;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 1024px) {
+  .settings-layout {
+    margin-left: 0;
+  }
+
+  .settings-layout.layout-collapsed {
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .settings-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .settings-brand h1 {
+    font-size: 0.95rem;
+  }
+
+  .settings-kicker {
+    font-size: 0.65rem;
+  }
+
+  .settings-email {
+    display: none;
+  }
+
+  .settings-main {
+    padding: 1rem;
+  }
+
+  .settings-card {
+    padding: 1.25rem;
+  }
+}
